@@ -51,8 +51,25 @@ public class Graph : MonoBehaviour
     }
 
     void Update(){}
+	
+	void AddNode(float x, float y, float z, string name, string json){
+		// instantiate A
+		GameObject node = Instantiate(nodepf, new Vector3(x, y, z), Quaternion.identity);
+		// make nodes children of graph object
+		node.transform.parent = transform;
+		// change name
+		node.name = name; 
+		// get script instances
+		Node AScript = A.GetComponent<Node>();
+		// add edge prefab      
+		AScript.SetEdgePrefab(edgepf);
 
-    void LoadGMLFromFile(TextAsset f){
+		// todo: add abiility to add json
+
+		
+	}
+    
+	void LoadGMLFromFile(TextAsset f){
       string[] lines = f.text.Split('\n');
       int currentobject = -1; // 0 = graph, 1 = node, 2 = edge
       int stage = -1; // 0 waiting to open, 1 = waiting for attribute, 2 = waiting for id, 3 = waiting for label, 4 = waiting for source, 5 = waiting for target

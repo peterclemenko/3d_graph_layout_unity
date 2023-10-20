@@ -9,6 +9,10 @@ public class Node : MonoBehaviour
 
   List<GameObject>  edges  = new List<GameObject> ();
   List<SpringJoint> joints = new List<SpringJoint>();  
+
+  string name;
+
+  string json;
   
   void Start(){
     transform.GetChild(0).GetComponent<TextMesh>().text = name;
@@ -45,6 +49,10 @@ public class Node : MonoBehaviour
     GameObject edge = Instantiate(this.epf, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
     edges.Add(edge);
     joints.Add(sj);
+  }
+    
+  public void SetJSON(string jsontoset)){
+    set json = jsontoset;
   }
     
 }
