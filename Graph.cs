@@ -66,9 +66,14 @@ public class Graph : MonoBehaviour
 
 		// todo: add abiility to add json
 
-		
 	}
     
+	
+	void DeleteNode(GameObject node){
+		// instantiate A
+		Destroy(node,0);
+	}
+
 	void LoadGMLFromFile(TextAsset f){
       string[] lines = f.text.Split('\n');
       int currentobject = -1; // 0 = graph, 1 = node, 2 = edge
